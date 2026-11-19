@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teranga Foot | Football Sénégalais</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f4f6f4;color:#17251d}
+header{background:#073d2b;color:white;padding:22px 7%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+.logo{font-size:27px;font-weight:bold;color:#f2cc55}
+nav a{color:white;text-decoration:none;margin:8px;font-weight:bold;font-size:14px}
+.hero{background:linear-gradient(120deg,#06452e,#087b4d);color:white;padding:65px 7%;text-align:center}
+.hero h1{font-size:42px;margin-bottom:15px}
+.hero p{font-size:17px;line-height:1.6}
+.container{padding:35px 7%}
+h2{margin-bottom:22px;color:#075333}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:white;padding:23px;border-radius:12px;box-shadow:0 3px 12px #00000010}
+.card h3{color:#087449;margin-bottom:10px}
+.card p{line-height:1.6;color:#59665e}
+.tag{display:inline-block;background:#e5f4eb;color:#087449;padding:6px 10px;border-radius:20px;font-size:12px;margin-bottom:12px}
+footer{background:#073d2b;color:white;text-align:center;padding:25px;margin-top:35px}
+footer p{margin:8px}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">🇸🇳 TERANGA FOOT</div>
+<nav>
+<a href="#accueil">Accueil</a>
+<a href="#ligue1">Ligue 1</a>
+<a href="#ligue2">Ligue 2</a>
+<a href="#actualites">Actualités</a>
+</nav>
+</header>
+
+<section class="hero" id="accueil">
+<h1>Le football sénégalais mérite la lumière !</h1>
+<p>Bienvenue sur Teranga Foot, votre plateforme dédiée à la Ligue 1 et à la Ligue 2 sénégalaises.</p>
+</section>
+
+<section class="container" id="ligue1">
+<h2>🏆 Ligue 1 sénégalaise</h2>
+<div class="grid">
+<div class="card"><span class="tag">Championnat national</span><h3>Ligue 1</h3><p>Suivez les clubs, les rencontres, les résultats et le classement de l'élite du football sénégalais.</p></div>
+<div class="card"><h3>📊 Classement</h3><p>Retrouvez les positions des équipes et leur parcours dans le championnat.</p></div>
+<div class="card"><h3>⚽ Résultats</h3><p>Découvrez les scores et les performances de chaque journée.</p></div>
+</div>
+</section>
+
+<section class="container" id="ligue2">
+<h2>🥇 Ligue 2 sénégalaise</h2>
+<div class="grid">
+<div class="card"><h3>Ligue 2</h3><p>Découvrez les clubs et les talents qui font vivre la deuxième division.</p></div>
+<div class="card"><h3>📅 Calendrier</h3><p>Suivez les rencontres et les prochaines journées.</p></div>
+<div class="card"><h3>📈 Classement</h3><p>Suivez la course à la montée en Ligue 1.</p></div>
+</div>
+</section>
+
+<section class="container" id="actualites">
+<h2>📰 Actualités du football sénégalais</h2>
+<div class="grid">
+<div class="card"><h3>À la une</h3><p>Les dernières nouvelles du championnat sénégalais seront publiées ici.</p></div>
+<div class="card"><h3>Clubs et joueurs</h3><p>Portraits, interviews et performances des acteurs du football local.</p></div>
+<div class="card"><h3>Nos talents</h3><p>Mettons en lumière les jeunes espoirs du Sénégal.</p></div>
+</div>
+</section>
+
+<footer>
+<p><strong>TERANGA FOOT 🇸🇳</strong></p>
+<p>La vitrine du football sénégalais.</p>
+<p>Valoriser nos clubs, révéler nos talents.</p>
+</footer>
+</body>
+</html>
