@@ -3,74 +3,304 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Teranga Foot | Football Sénégalais</title>
+<title>TERANGA FOOT | Le football sénégalais</title>
+<meta name="description" content="Toute l'actualité de la Ligue 1 et de la Ligue 2 sénégalaises.">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f4f6f4;color:#17251d}
-header{background:#073d2b;color:white;padding:22px 7%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
-.logo{font-size:27px;font-weight:bold;color:#f2cc55}
-nav a{color:white;text-decoration:none;margin:8px;font-weight:bold;font-size:14px}
-.hero{background:linear-gradient(120deg,#06452e,#087b4d);color:white;padding:65px 7%;text-align:center}
-.hero h1{font-size:42px;margin-bottom:15px}
-.hero p{font-size:17px;line-height:1.6}
-.container{padding:35px 7%}
-h2{margin-bottom:22px;color:#075333}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.card{background:white;padding:23px;border-radius:12px;box-shadow:0 3px 12px #00000010}
-.card h3{color:#087449;margin-bottom:10px}
-.card p{line-height:1.6;color:#59665e}
-.tag{display:inline-block;background:#e5f4eb;color:#087449;padding:6px 10px;border-radius:20px;font-size:12px;margin-bottom:12px}
-footer{background:#073d2b;color:white;text-align:center;padding:25px;margin-top:35px}
-footer p{margin:8px}
+:root{
+ --green:#087448;--dark:#071c15;--gold:#e9c65b;
+ --light:#f3f6f3;--white:#fff;--muted:#819087;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:var(--light);color:#15251c}
+a{text-decoration:none;color:inherit}
+.topbar{background:#04140e;color:#d9e7dc;padding:9px 6%;
+ font-size:12px;display:flex;justify-content:space-between}
+header{background:#09281c;color:white;padding:18px 6%;
+ display:flex;align-items:center;justify-content:space-between;
+ position:sticky;top:0;z-index:20;box-shadow:0 4px 20px #0003}
+.logo{font-size:25px;font-weight:900;color:var(--gold);letter-spacing:1px}
+.logo span{color:white}
+nav{display:flex;gap:23px;align-items:center}
+nav a{font-size:13px;font-weight:bold;transition:.3s}
+nav a:hover{color:var(--gold)}
+.menu-btn{display:none;background:none;border:0;color:white;font-size:25px}
+.hero{min-height:490px;position:relative;display:flex;align-items:center;
+ background:linear-gradient(90deg,#041c12 5%,#041c12dd 48%,transparent),
+ url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1600') center/cover}
+.hero-content{padding:65px 7%;max-width:720px;color:white;animation:appear 1s ease}
+.kicker{color:var(--gold);font-size:12px;font-weight:bold;letter-spacing:3px}
+.hero h1{font-size:clamp(35px,6vw,65px);line-height:1.05;margin:20px 0}
+.hero p{color:#dce9e0;line-height:1.8;max-width:510px}
+.btn{display:inline-block;margin-top:25px;background:var(--gold);
+ color:#14251b;padding:14px 22px;border-radius:5px;font-weight:bold;
+ transition:.3s}
+.btn:hover{transform:translateY(-4px);box-shadow:0 8px 20px #0004}
+.ticker{background:var(--green);color:white;padding:13px 6%;
+ display:flex;gap:22px;overflow:hidden;white-space:nowrap;font-size:13px}
+.ticker strong{color:var(--gold)}
+.container{padding:55px 6%;max-width:1500px;margin:auto}
+.section-head{display:flex;align-items:center;justify-content:space-between;
+ margin-bottom:25px;gap:15px}
+.section-head h2{font-size:27px}
+.section-head h2 span{color:var(--green)}
+.section-head a{font-size:13px;color:var(--green);font-weight:bold}
+.news-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:19px}
+.news-card{background:white;border-radius:10px;overflow:hidden;
+ box-shadow:0 5px 20px #15251c0d;transition:.35s}
+.news-card:hover{transform:translateY(-7px);box-shadow:0 12px 30px #15251c20}
+.news-image{height:205px;position:relative;overflow:hidden}
+.news-image img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.news-card:hover img{transform:scale(1.07)}
+.news-card.featured .news-image{height:270px}
+.category{position:absolute;bottom:12px;left:12px;background:var(--green);
+ color:white;padding:7px 11px;border-radius:3px;font-size:11px;font-weight:bold}
+.news-body{padding:19px}
+.news-body small{color:var(--muted);font-size:11px}
+.news-body h3{font-size:18px;line-height:1.4;margin:10px 0}
+.news-body p{font-size:13px;line-height:1.6;color:#66736b}
+.leagues{background:#09281c;color:white}
+.league-tabs{display:flex;gap:10px;margin-bottom:25px;flex-wrap:wrap}
+.tab{padding:12px 20px;border:1px solid #547361;background:transparent;
+ color:white;border-radius:5px;cursor:pointer;font-weight:bold}
+.tab.active{background:var(--gold);color:#14251b;border-color:var(--gold)}
+.table-wrap{overflow-x:auto;background:white;color:#1c2b22;border-radius:9px}
+table{width:100%;border-collapse:collapse;min-width:510px}
+th{background:#e9f1eb;color:#315540;text-align:left;padding:15px;font-size:12px}
+td{padding:15px;border-bottom:1px solid #edf0ed;font-size:13px}
+tr:hover td{background:#f3f8f4}
+.position{font-weight:bold;color:var(--green)}
+.fixture-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.match{background:white;padding:23px;border-radius:9px;text-align:center;
+ box-shadow:0 5px 20px #00000009}
+.match small{color:var(--muted)}
+.teams{display:flex;align-items:center;justify-content:space-around;
+ margin:22px 0;font-weight:bold}
+.teams span{font-size:13px}
+.vs{color:var(--green);font-size:19px;font-weight:900}
+.match-label{background:#eaf3ed;color:var(--green);padding:7px 12px;
+ border-radius:20px;font-size:11px;font-weight:bold}
+.club-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.club{background:white;border-radius:10px;padding:25px;text-align:center;
+ transition:.3s;box-shadow:0 5px 20px #00000009}
+.club:hover{transform:translateY(-6px)}
+.club-logo{width:76px;height:76px;border-radius:50%;margin:auto auto 15px;
+ background:linear-gradient(135deg,#087448,#e9c65b);display:grid;
+ place-items:center;color:white;font-size:27px;font-weight:900}
+.club h3{font-size:15px;margin-bottom:6px}
+.club small{color:var(--muted)}
+.banner{margin:15px 6%;border-radius:12px;overflow:hidden;
+ background:linear-gradient(90deg,#052316eF,#05231688),
+ url('https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1400') center/cover;
+ padding:55px;color:white}
+.banner h2{font-size:32px;margin-bottom:12px}
+.banner p{color:#d7e6dc;line-height:1.7}
+footer{background:#04140e;color:white;padding:45px 6% 20px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+footer h3{color:var(--gold);margin-bottom:15px}
+footer p,footer a{font-size:13px;color:#b8c9be;line-height:2}
+footer a{display:block}
+.copyright{border-top:1px solid #294235;margin-top:30px;padding-top:20px;
+ text-align:center;color:#9eafa4;font-size:12px}
+@keyframes appear{from{opacity:0;transform:translateY(25px)}
+ to{opacity:1;transform:translateY(0)}}
+@media(max-width:850px){
+ nav{display:none;position:absolute;top:100%;left:0;width:100%;
+ background:#09281c;padding:22px;flex-direction:column;align-items:flex-start}
+ nav.open{display:flex}
+ .menu-btn{display:block}
+ .news-grid{grid-template-columns:1fr 1fr}
+ .news-card.featured{grid-column:span 2}
+ .club-grid{grid-template-columns:repeat(2,1fr)}
+ .fixture-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:550px){
+ .topbar{font-size:10px}
+ .hero{min-height:430px;background-position:60% center}
+ .hero-content{padding:45px 6%}
+ .container{padding:40px 5%}
+ .news-grid,.fixture-grid{grid-template-columns:1fr}
+ .news-card.featured{grid-column:auto}
+ .club-grid{grid-template-columns:1fr 1fr}
+ .section-head h2{font-size:21px}
+ .banner{margin:10px 5%;padding:35px 22px}
+ .banner h2{font-size:25px}
+ .footer-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
+
+<div class="topbar">
+<span>🇸🇳 LE FOOTBALL SÉNÉGALAIS À LA UNE</span>
+<span>PASSION • TALENT • FIERTÉ</span>
+</div>
+
 <header>
-<div class="logo">🇸🇳 TERANGA FOOT</div>
+<div class="logo">TERANGA <span>FOOT.</span></div>
+<button class="menu-btn" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
 <nav>
-<a href="#accueil">Accueil</a>
-<a href="#ligue1">Ligue 1</a>
-<a href="#ligue2">Ligue 2</a>
-<a href="#actualites">Actualités</a>
+<a href="#accueil">ACCUEIL</a>
+<a href="#actualites">ACTUALITÉS</a>
+<a href="#ligues">LIGUE 1</a>
+<a href="#ligues">LIGUE 2</a>
+<a href="#matchs">MATCHS</a>
+<a href="#clubs">CLUBS</a>
 </nav>
 </header>
 
 <section class="hero" id="accueil">
-<h1>Le football sénégalais mérite la lumière !</h1>
-<p>Bienvenue sur Teranga Foot, votre plateforme dédiée à la Ligue 1 et à la Ligue 2 sénégalaises.</p>
-</section>
-
-<section class="container" id="ligue1">
-<h2>🏆 Ligue 1 sénégalaise</h2>
-<div class="grid">
-<div class="card"><span class="tag">Championnat national</span><h3>Ligue 1</h3><p>Suivez les clubs, les rencontres, les résultats et le classement de l'élite du football sénégalais.</p></div>
-<div class="card"><h3>📊 Classement</h3><p>Retrouvez les positions des équipes et leur parcours dans le championnat.</p></div>
-<div class="card"><h3>⚽ Résultats</h3><p>Découvrez les scores et les performances de chaque journée.</p></div>
+<div class="hero-content">
+<div class="kicker">LA MAISON DU FOOTBALL SÉNÉGALAIS</div>
+<h1>NOTRE FOOTBALL.<br>NOTRE FIERTÉ.</h1>
+<p>Découvrez toute la richesse de la Ligue 1 et de la Ligue 2 sénégalaises. Les clubs, les joueurs, les résultats et les histoires qui font vibrer notre championnat.</p>
+<a href="#actualites" class="btn">DÉCOUVRIR L'ACTUALITÉ →</a>
 </div>
 </section>
 
-<section class="container" id="ligue2">
-<h2>🥇 Ligue 2 sénégalaise</h2>
-<div class="grid">
-<div class="card"><h3>Ligue 2</h3><p>Découvrez les clubs et les talents qui font vivre la deuxième division.</p></div>
-<div class="card"><h3>📅 Calendrier</h3><p>Suivez les rencontres et les prochaines journées.</p></div>
-<div class="card"><h3>📈 Classement</h3><p>Suivez la course à la montée en Ligue 1.</p></div>
+<div class="ticker">
+<strong>TERANGA FOOT</strong>
+<span>⚽ Valorisons nos championnats</span>
+<span>🏆 Révélons nos talents</span>
+<span>🇸🇳 Faisons rayonner le football sénégalais</span>
 </div>
-</section>
 
 <section class="container" id="actualites">
-<h2>📰 Actualités du football sénégalais</h2>
-<div class="grid">
-<div class="card"><h3>À la une</h3><p>Les dernières nouvelles du championnat sénégalais seront publiées ici.</p></div>
-<div class="card"><h3>Clubs et joueurs</h3><p>Portraits, interviews et performances des acteurs du football local.</p></div>
-<div class="card"><h3>Nos talents</h3><p>Mettons en lumière les jeunes espoirs du Sénégal.</p></div>
+<div class="section-head">
+<h2>À LA <span>UNE</span></h2>
+<a href="#clubs">TOUTES LES RUBRIQUES →</a>
 </div>
+<div class="news-grid">
+<article class="news-card featured">
+<div class="news-image">
+<img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1000" alt="Terrain de football">
+<span class="category">FOOTBALL SÉNÉGALAIS</span>
+</div>
+<div class="news-body">
+<small>TERANGA FOOT • À LA UNE</small>
+<h3>Le championnat sénégalais au cœur de notre passion</h3>
+<p>Retrouvez les actualités, les performances et les histoires de nos clubs et de nos joueurs.</p>
+</div>
+</article>
+<article class="news-card">
+<div class="news-image">
+<img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=700" alt="Action de football">
+<span class="category">LIGUE 1</span>
+</div>
+<div class="news-body">
+<small>CHAMPIONNAT • DOSSIER</small>
+<h3>Les talents de notre football à découvrir</h3>
+<p>Les joueurs qui font vivre les terrains sénégalais.</p>
+</div>
+</article>
+<article class="news-card">
+<div class="news-image">
+<img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=700" alt="Stade de football">
+<span class="category">LIGUE 2</span>
+</div>
+<div class="news-body">
+<small>CHAMPIONNAT • DÉCOUVERTE</small>
+<h3>La deuxième division mérite aussi la lumière</h3>
+<p>Les clubs et les ambitions de la Ligue 2 sénégalaise.</p>
+</div>
+</article>
+</div>
+</section>
+
+<section class="leagues" id="ligues">
+<div class="container">
+<div class="section-head">
+<h2 style="color:white">NOS <span>CHAMPIONNATS</span></h2>
+</div>
+<div class="league-tabs">
+<button class="tab active" onclick="showLeague('l1',this)">LIGUE 1</button>
+<button class="tab" onclick="showLeague('l2',this)">LIGUE 2</button>
+</div>
+<div id="l1" class="table-wrap">
+<table>
+<thead><tr><th>POS.</th><th>CLUB</th><th>PTS</th><th>STATUT</th></tr></thead>
+<tbody>
+<tr><td class="position">01</td><td>Club à renseigner</td><td>—</td><td>À actualiser</td></tr>
+<tr><td class="position">02</td><td>Club à renseigner</td><td>—</td><td>À actualiser</td></tr>
+<tr><td class="position">03</td><td>Club à renseigner</td><td>—</td><td>À actualiser</td></tr>
+<tr><td class="position">04</td><td>Club à renseigner</td><td>—</td><td>À actualiser</td></tr>
+</tbody></table>
+</div>
+<div id="l2" class="table-wrap" style="display:none">
+<table>
+<thead><tr><th>POS.</th><th>CLUB</th><th>PTS</th><th>STATUT</th></tr></thead>
+<tbody>
+<tr><td class="position">01</td><td>Club à renseigner</td><td>—</td><td>À actualiser</td></tr>
+<tr><td class="position">02</td><td>Club à renseigner</td><td>—</td><td>À actualiser</td></tr>
+<tr><td class="position">03</td><td>Club à renseigner</td><td>—</td><td>À actualiser</td></tr>
+<tr><td class="position">04</td><td>Club à renseigner</td><td>—</td><td>À actualiser</td></tr>
+</tbody></table>
+</div>
+<p style="font-size:12px;color:#b9cfc1;margin-top:15px">Données de démonstration : les classements officiels seront ajoutés et actualisés.</p>
+</div>
+</section>
+
+<section class="container" id="matchs">
+<div class="section-head">
+<h2>LES <span>RENCONTRES</span></h2>
+<a href="#ligues">CALENDRIERS →</a>
+</div>
+<div class="fixture-grid">
+<div class="match"><small>LIGUE 1 • PROCHAINE JOURNÉE</small>
+<div class="teams"><span>ÉQUIPE A</span><span class="vs">VS</span><span>ÉQUIPE B</span></div>
+<span class="match-label">DATE À CONFIRMER</span></div>
+<div class="match"><small>LIGUE 1 • PROCHAINE JOURNÉE</small>
+<div class="teams"><span>ÉQUIPE C</span><span class="vs">VS</span><span>ÉQUIPE D</span></div>
+<span class="match-label">DATE À CONFIRMER</span></div>
+<div class="match"><small>LIGUE 2 • PROCHAINE JOURNÉE</small>
+<div class="teams"><span>ÉQUIPE E</span><span class="vs">VS</span><span>ÉQUIPE F</span></div>
+<span class="match-label">DATE À CONFIRMER</span></div>
+</div>
+</section>
+
+<section class="container" id="clubs">
+<div class="section-head">
+<h2>LES <span>CLUBS</span></h2>
+<a href="#ligues">DÉCOUVRIR →</a>
+</div>
+<div class="club-grid">
+<div class="club"><div class="club-logo">L1</div><h3>Ligue 1</h3><small>Clubs de l'élite</small></div>
+<div class="club"><div class="club-logo">L2</div><h3>Ligue 2</h3><small>Clubs de deuxième division</small></div>
+<div class="club"><div class="club-logo">⭐</div><h3>Nos talents</h3><small>Joueurs à découvrir</small></div>
+<div class="club"><div class="club-logo">🏆</div><h3>Palmarès</h3><small>Histoire du championnat</small></div>
+</div>
+</section>
+
+<section class="banner">
+<div class="kicker">ENSEMBLE POUR NOTRE FOOTBALL</div>
+<h2>LE SÉNÉGAL A DU TALENT.</h2>
+<p>Notre championnat mérite une grande vitrine.<br>Teranga Foot est là pour le mettre en lumière.</p>
+<a href="#actualites" class="btn">EXPLORER TERANGA FOOT →</a>
 </section>
 
 <footer>
-<p><strong>TERANGA FOOT 🇸🇳</strong></p>
-<p>La vitrine du football sénégalais.</p>
-<p>Valoriser nos clubs, révéler nos talents.</p>
+<div class="footer-grid">
+<div><h3>🇸🇳 TERANGA FOOT</h3>
+<p>La plateforme dédiée à la promotion de la Ligue 1 et de la Ligue 2 sénégalaises. Notre football, notre fierté.</p></div>
+<div><h3>CHAMPIONNATS</h3>
+<a href="#ligues">Ligue 1 sénégalaise</a>
+<a href="#ligues">Ligue 2 sénégalaise</a>
+<a href="#matchs">Calendrier des matchs</a></div>
+<div><h3>EXPLORER</h3>
+<a href="#actualites">Actualités</a>
+<a href="#clubs">Clubs et joueurs</a>
+<a href="#accueil">Accueil</a></div>
+</div>
+<div class="copyright">© 2026 TERANGA FOOT • Le football sénégalais mérite la lumière.</div>
 </footer>
+
+<script>
+function showLeague(id,button){
+ document.getElementById('l1').style.display=id==='l1'?'block':'none';
+ document.getElementById('l2').style.display=id==='l2'?'block':'none';
+ document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+ button.classList.add('active');
+}
+</script>
 </body>
 </html>
